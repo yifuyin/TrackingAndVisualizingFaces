@@ -8,7 +8,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        testVc = LiveAvatarController(apiKey: "8AGVCQ.4ZbMQw:-tzSxyQZzuY6OGs5JlHSOeqyHeWB7Agf0_e6YYVHbIw", channelName: "avatar-state");
+        testVc = LiveAvatarController(apiKey: "8AGVCQ.4ZbMQw:-tzSxyQZzuY6OGs5JlHSOeqyHeWB7Agf0_e6YYVHbIw", channelName: "avatar-state", view: view);
 
 //        // Set the view's delegate
 //        sceneView.delegate = self
@@ -34,17 +34,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let testVc = testVc else { return }
         testVc.startCapture()
         var sceneView = testVc.skView
+        var arView = testVc.frontARSCNView
 
         // Add it to parents subview
+        self.view.addSubview(arView)
         self.view.addSubview(sceneView)
-        // self.view.addSubview(testVc.skView)
 
         //add autolayout contstraints
-        sceneView.translatesAutoresizingMaskIntoConstraints = false
-        sceneView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        sceneView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        sceneView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        sceneView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+//        sceneView.translatesAutoresizingMaskIntoConstraints = false
+//        sceneView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+//        sceneView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+//        sceneView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+//        sceneView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
 
 //    override func viewWillDisappear(_ animated: Bool) {
