@@ -8,7 +8,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        testVc = LiveAvatarController(apiKey: "8AGVCQ.4ZbMQw:-tzSxyQZzuY6OGs5JlHSOeqyHeWB7Agf0_e6YYVHbIw", channelName: "avatar-state", view: view);
+        testVc = LiveAvatarController(apiKey: "8AGVCQ.4ZbMQw:-tzSxyQZzuY6OGs5JlHSOeqyHeWB7Agf0_e6YYVHbIw", channelName: "avatar-state");
+        testVc?.addFaceCaptureToUIView(view: view, emit_id: "main-1")
+        testVc?.addListenerWrapperToUIVIew(rect: CGRect(
+            origin: CGPoint(x: 200, y: 200),
+            size: CGSize(width: 100, height: 100)
+        ), view: view, name: "main-1")
+        
+        testVc?.addListenerWrapperToUIVIew(rect: CGRect(
+            origin: CGPoint(x: 0, y: 0),
+            size: CGSize(width: 100, height: 100)
+        ), view: view, name: "main-2")
 
 //        // Set the view's delegate
 //        sceneView.delegate = self
@@ -32,13 +42,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         guard let testVc = testVc else { return }
-        testVc.startCapture()
-        var sceneView = testVc.skView
-        var arView = testVc.frontARSCNView
+        //testVc.startCapture()
+//        var sceneView = testVc.skView
+//        var arView = testVc.frontARSCNView
 
         // Add it to parents subview
-        self.view.addSubview(arView)
-        self.view.addSubview(sceneView)
+//        self.view.addSubview(arView)
+//        self.view.addSubview(sceneView)
 
         //add autolayout contstraints
 //        sceneView.translatesAutoresizingMaskIntoConstraints = false
