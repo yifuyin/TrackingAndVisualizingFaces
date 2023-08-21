@@ -9,16 +9,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         testVc = LiveAvatarController(apiKey: "8AGVCQ.4ZbMQw:-tzSxyQZzuY6OGs5JlHSOeqyHeWB7Agf0_e6YYVHbIw", channelName: "avatar-state");
-        testVc?.addFaceCaptureToUIView(view: view, emit_id: "main-1")
-        testVc?.addListenerWrapperToUIVIew(rect: CGRect(
-            origin: CGPoint(x: 200, y: 200),
-            size: CGSize(width: 100, height: 100)
-        ), view: view, name: "main-1")
         
-        testVc?.addListenerWrapperToUIVIew(rect: CGRect(
+        testVc?.setupFaceCapture(addFaceCaptureToView: view, emitId: "main-1")
+        
+//        testVc?.addLiveAvatarFromTargetId(frame: view.frame, addLiveAvatarToView: view, emitId: "main-1")
+        
+        testVc?.addLiveAvatarFromTargetId(frame: CGRect(
+            origin: CGPoint(x: 100, y: 100),
+            size: CGSize(width: 200, height: 200)
+        ), addLiveAvatarToView: view, emitId: "main-1")
+
+        testVc?.addLiveAvatarFromTargetId2(frame: CGRect(
             origin: CGPoint(x: 0, y: 0),
             size: CGSize(width: 100, height: 100)
-        ), view: view, name: "main-2")
+        ), addLiveAvatarToView: view, emitId: "maiAnimatedFaceLive2Dn-2")
 
 //        // Set the view's delegate
 //        sceneView.delegate = self
@@ -41,7 +45,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //    }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        
         guard let testVc = testVc else { return }
+        
         //testVc.startCapture()
 //        var sceneView = testVc.skView
 //        var arView = testVc.frontARSCNView
