@@ -4,6 +4,8 @@ import SpriteKit
 import openLiveAvatarSDK
 
 class ViewController: UIViewController, ARSCNViewDelegate {
+    @IBOutlet var view1: UIView!
+    @IBOutlet var view2: UIView!
     var testVc: LiveAvatarController?
 
     override func viewDidLoad() {
@@ -12,18 +14,32 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         testVc?.setupFaceCapture(addFaceCaptureToView: view, emitId: "main-1")
         
-//        testVc?.addLiveAvatarFromTargetId(frame: view.frame, addLiveAvatarToView: view, emitId: "main-1")
+//      testVc?.addLiveAvatarFromTargetId(frame: view.frame, addLiveAvatarToView: view, emitId: "main-1")
         
-        testVc?.addLiveAvatarFromTargetId(frame: CGRect(
+        let skView: UIView? = testVc?.addLiveAvatarFromTargetId(frame: CGRect(
+            origin: CGPoint(x: 200, y: 0),
+            size: CGSize(width: 100, height: 100)
+        ), addLiveAvatarToView: view, emitId: "main-3")
+        
+        let skView2: UIView? = testVc?.addLiveAvatarFromTargetId(frame: CGRect(
             origin: CGPoint(x: 100, y: 100),
             size: CGSize(width: 200, height: 200)
         ), addLiveAvatarToView: view, emitId: "main-1")
-
-        testVc?.addLiveAvatarFromTargetId2(frame: CGRect(
+        
+        let skView3: UIView? = testVc?.addLiveAvatarFromTargetId(frame: CGRect(
             origin: CGPoint(x: 0, y: 0),
             size: CGSize(width: 100, height: 100)
-        ), addLiveAvatarToView: view, emitId: "maiAnimatedFaceLive2Dn-2")
-
+        ), addLiveAvatarToView: view, emitId: "main-2")
+        let skView4: UIView? = testVc?.addLiveAvatarFromTargetId(frame: CGRect(
+            origin: CGPoint(x: 100, y: 0),
+            size: CGSize(width:  100, height: 100)
+        ), addLiveAvatarToView: view, emitId: "main-4")
+        let skView5: UIView? = testVc?.addLiveAvatarFromTargetId(frame: CGRect(
+            origin: CGPoint(x: 300, y: 0),
+            size: CGSize(width:  100, height: 100)
+        ), addLiveAvatarToView: view, emitId: "main-5")
+        view.bringSubviewToFront(skView!)
+        
 //        // Set the view's delegate
 //        sceneView.delegate = self
 //
@@ -46,9 +62,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        
-        guard let testVc = testVc else { return }
-        
+        super.viewDidAppear(true)
         //testVc.startCapture()
 //        var sceneView = testVc.skView
 //        var arView = testVc.frontARSCNView
